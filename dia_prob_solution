@@ -1,0 +1,28 @@
+def compress_message(msg):
+    compressed_msg = ""
+    count = 1
+
+    for i in range(len(msg)):
+        current_char = msg[i]
+        
+        if i < len(msg) - 1 and current_char == msg[i + 1]:
+            count += 1  # Increment the count for consecutive characters
+        else:
+            # Append the current character and its count (if greater than 1) to the compressed message
+            compressed_msg += current_char
+            if count > 1:
+                compressed_msg += str(count)
+            count = 1  # Reset the count for the next character
+
+    return compressed_msg
+
+# Input
+print("Please enter your message: ")
+msg = input().strip()
+
+# Compress the message
+compressed_msg = compress_message(msg)
+
+# Output the compressed message
+print("Your compressed message is:")
+print(compressed_msg)
